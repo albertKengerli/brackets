@@ -38,10 +38,9 @@ module.exports = function check(str, bracketsConfig) {
   })
 
   for (let i = 0; i < bracketArray.length; i++) {
-    
+        
     if ( (bracketArray[i] === queue.peek()) && (openArray[openArray.indexOf(bracketArray[i])] === closeArray[closeArray.indexOf(bracketArray[i])]) ) {
       queue.pop();
-      
       continue;
     }
     
@@ -50,36 +49,12 @@ module.exports = function check(str, bracketsConfig) {
       continue;
     }
 
-    if (openArray.indexOf(queue.peek()) === closeArray.indexOf(bracketArray[i])) {
+    if (openArray.indexOf(queue.peek()) === closeArray.indexOf(bracketArray[i])) 
       queue.pop();
-      //console.log(queue);
-    } else {
+    else 
       return false;
-    }
-
   }
 
-  if (queue.isEmpty() === true) result = true;
-    else result = false;
-
-  //console.log(openArray);
-  ////console.log(closeArray);
-  return result;
-  
-
-    // function escapeRegExp(string) {
-    //   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // }
-
-    // let openBracket = bracketPair[0];
-    // let closeBracket = bracketPair[1];
-    // let regexOpen = RegExp(escapeRegExp(openBracket),"g");
-    // let regexClose = RegExp(escapeRegExp(closeBracket),"g");
-    
-    // if (str.match(regexOpen).length != str.match(regexClose).length) {
-    //   result = false;
-    // }
-  
-
-  
+  result = queue.isEmpty();
+  return result;  
 }
